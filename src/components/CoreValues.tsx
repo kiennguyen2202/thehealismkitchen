@@ -1,7 +1,24 @@
+import { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Heart, Leaf, Smile, Users, Handshake } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const CoreValues = () => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: sectionRef.current, start: "top 75%", once: true },
+        defaults: { ease: "power2.out", duration: 0.6 },
+      });
+      tl.fromTo(".values-title", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
+        .fromTo(".value-card", { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.12 }, "<0.1");
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
   const values = [
     {
       icon: Heart,
@@ -42,8 +59,8 @@ const CoreValues = () => {
 
   return (
     <section id="values" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
+      <div className="container mx-auto px-4" ref={sectionRef}>
+        <div className="values-title text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Giá Trị Cốt Lõi
           </h2>
@@ -53,11 +70,11 @@ const CoreValues = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="values-card grid md:grid-cols-2 lg:grid-cols-6 gap-8 max-w-6xl mx-auto">
           {values.map((value, index) => (
             <Card
               key={value.title}
-              className="p-8 hover:shadow-medium transition-smooth animate-fade-in-up bg-card hover:scale-105"
+              className={`value-card ${index <= 2 ? "lg:col-span-2" : ""} ${index === 3 ? "lg:col-start-2 lg:col-span-2 justify-self-center" : ""} ${index === 4 ? "lg:col-start-4 lg:col-span-2 justify-self-center" : ""} p-8 hover:shadow-medium transition-smooth bg-card hover:scale-105`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className={`w-16 h-16 rounded-full ${value.bg} flex items-center justify-center mb-6`}>

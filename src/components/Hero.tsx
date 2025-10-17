@@ -1,36 +1,59 @@
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-food.jpg";
+import heroImage from "@/assets/banner đầu trang web.png";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: sectionRef.current, start: "top 70%", once: true },
+        defaults: { ease: "power2.out", duration: 0.7 },
+      });
+      tl.fromTo(".hero-title", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
+        .fromTo(".hero-slogan", { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, "<0.1")
+        .fromTo(".hero-actions", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, "<0.1");
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image (no overlay so colors match the image) */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
           alt="Fresh organic food"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-32">
-        <div className="max-w-3xl animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+      <div className="relative z-10 container mx-auto px-4 py-32" ref={sectionRef}>
+        <div className="max-w-3xl">
+          <h1 className="hero-title text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
             THE HEALISM
             <br />
             <span className="text-secondary">KITCHEN</span>
           </h1>
-          <p className="text-2xl md:text-3xl text-primary-foreground/90 mb-8 font-light">
-            Less waste, more taste
-          </p>
-          <p className="text-lg md:text-xl text-primary-foreground/80 mb-12 max-w-2xl leading-relaxed">
+          <div className="hero-slogan inline-flex items-center gap-3 text-2xl md:text-3xl text-primary-foreground/90 mb-8 font-light drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <span>Less waste, more taste</span>
+            <img
+              src="/logo.png"
+              alt="The Healism Kitchen logo"
+              className="h-16 w-16 md:h-20 md:w-20 rounded-full ring-2 ring-primary-foreground/40 shadow-soft object-contain bg-white/90 p-1"
+            />
+          </div>
+          <p className="text-lg md:text-xl text-primary-foreground/80 mb-12 max-w-2xl leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]">
             Biến những gì bị bỏ quên thành điều đáng quý. Mỗi bữa ăn không chỉ tốt cho sức khỏe,
             mà còn góp phần bảo vệ môi trường và lan tỏa lối sống bền vững.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="hero-actions flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="gradient-hero text-lg px-8 shadow-medium">
               <a href="#menu">
                 Khám Phá Menu

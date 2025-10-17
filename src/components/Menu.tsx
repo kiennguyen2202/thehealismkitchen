@@ -1,35 +1,73 @@
+import { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import menu1 from "@/assets/menu-1.jpg";
-import menu2 from "@/assets/menu-2.jpg";
-import menu3 from "@/assets/menu-3.jpg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import food2 from "@/assets/đồ ăn 2.png";
+import food3 from "@/assets/đồ ăn 3.png";
+import food4 from "@/assets/đồ ăn 4.png";
+import food5 from "@/assets/đồ ăn 5.png";
+import food6 from "@/assets/đồ ăn 6.png";
+import food7 from "@/assets/đồ ăn 7.png";
 
 const Menu = () => {
-  const menuItems = [
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: sectionRef.current, start: "top 70%" },
+        defaults: { ease: "power2.out", duration: 0.6 },
+      });
+      tl.fromTo(".menu-title", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
+        .fromTo(".menu-card-item", { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.12 }, "<0.2");
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+  const menu = [
     {
-      image: menu1,
-      title: "Bowl & Salad Boxes",
-      description: "Các món bowl và salad tươi ngon với nguyên liệu đa dạng, đầy màu sắc và dinh dưỡng",
-      tag: "Phổ biến"
-    },
-    {
-      image: menu2,
-      title: "Fresh Garden Salads",
-      description: "Salad xanh tươi mát với các loại rau củ hữu cơ, hạt dinh dưỡng và sốt tự nhiên",
+      image: food3,
+      title: "Salad gà sốt sữa chua",
+      description: "Salad gà tươi với sốt sữa chua nhẹ nhàng, giàu đạm và rau xanh",
       tag: "Healthy"
     },
     {
-      image: menu3,
-      title: "Smoothie & Bowls",
-      description: "Sinh tố và smoothie bowl với trái cây tươi ngon, đầy năng lượng cho ngày mới",
-      tag: "Breakfast"
+      image: food2,
+      title: "Gà áp chảo & rau củ",
+      description: "Bữa ăn cân bằng với thịt gà, khoai bi và salad mùa",
+      tag: "Balanced"
+    },
+    {
+      image: food6,
+      title: "Gà nướng kiwi & salad mùa",
+      description: "Bữa ăn cân bằng với gà nướng, kiwi tươi, măng tây và salad rau xanh tươi mát.",
+      tag: "High Protein"
+    },
+    {
+      image: food4,
+      title: "Nước ép trái cây",
+      description: "Nước ép nhiều lựa chọn: cam, táo, cà rốt, dưa hấu,dâu tây,dưa leo",
+      tag: "Drink"
+    },
+    {
+      image: food5,
+      title: "Combo bento đầy đủ",
+      description: "Ưa thích mỗi ngày: gà áp chảo, măng tây, cà chua bi và sốt",
+      tag: "Popular"
+    },
+    {
+      image: food7,
+      title: "Sữa đậu xanh",
+      description: "Đồ uống thực vật nhẹ nhàng, tốt cho sức khỏe và tiêu hóa",
+      tag: "Drink"
     }
   ];
 
   return (
     <section id="menu" className="py-24 gradient-section">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
+      <div className="container mx-auto px-4" ref={sectionRef}>
+        <div className="menu-title text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Menu Đa Dạng
           </h2>
@@ -40,10 +78,10 @@ const Menu = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {menuItems.map((item, index) => (
+          {menu.map((item, index) => (
             <Card
               key={item.title}
-              className="overflow-hidden hover:shadow-medium transition-smooth animate-fade-in-up group bg-card"
+              className="menu-card-item overflow-hidden hover:shadow-medium transition-smooth group bg-card"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <div className="relative overflow-hidden aspect-[4/3]">

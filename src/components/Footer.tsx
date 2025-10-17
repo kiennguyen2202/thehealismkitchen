@@ -1,4 +1,5 @@
 import { Leaf } from "lucide-react";
+import signImage from "@/assets/bảng hiệu.jpg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -46,23 +47,33 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="h-full">
             <h3 className="font-bold text-lg mb-4">Liên hệ</h3>
-            <ul className="space-y-2 text-background/80 text-sm">
-              <li>Hotline & Zalo: 0971 832 910</li>
-              <li>Email: thehealismkitchen@gmail.com</li>
-              <li>
-                <a 
-                  href="https://www.facebook.com/thehealismkitchen" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-smooth"
-                >
-                  Facebook: @thehealismkitchen
-                </a>
-              </li>
-            </ul>
+            <div className="flex items-start gap-4 h-full">
+              <ul className="space-y-2 text-background/80 text-sm self-start flex-none">
+                <li>Hotline & Zalo: 0971 832 910</li>
+                <li>Email: thehealismkitchen@gmail.com</li>
+                <li>
+                  <a 
+                    href="https://www.facebook.com/thehealismkitchen" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-smooth"
+                  >
+                    Facebook: @thehealismkitchen
+                  </a>
+                </li>
+              </ul>
+              <div className="ml-6 flex-1 flex justify-end items-start h-full">
+                <img
+                  src={signImage}
+                  alt="Bảng hiệu The Healism Kitchen"
+                  className="w-full h-auto max-h-80 md:max-h-96 lg:max-h-[34rem] rounded-sm object-cover shadow-medium"
+                />
+              </div>
+            </div>
           </div>
+          
         </div>
 
         <div className="border-t border-background/20 pt-8 text-center">
