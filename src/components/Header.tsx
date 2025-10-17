@@ -30,14 +30,19 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="#" className="flex items-center gap-3 group animate-fade-in">
+            <img
+              src="/logo.png"
+              alt="Healism logo"
+              className="w-9 h-9 rounded-full object-contain animate-float-slow"
+            />
             <div className="text-2xl font-bold text-primary">
               THE HEALISM KITCHEN
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 animate-fade-in">
             {navLinks.map((link) => (
               <a
                 key={link.href}
