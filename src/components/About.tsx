@@ -52,7 +52,7 @@ const About = () => {
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                   <Leaf className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground">Công ty Cổ phần Healism</h3>
+                <h3 className="text-2xl font-bold text-foreground">Công ty TNHH Healism</h3>
               </div>
 
               <div className="space-y-6 text-foreground/80 leading-relaxed">
@@ -86,8 +86,7 @@ const About = () => {
               <h3 className="text-xl font-bold text-foreground mb-4">Tầm Nhìn</h3>
               <p className="text-foreground/80 leading-relaxed">
                 Đến năm 2030, trở thành thương hiệu mà người tiêu dùng có thể tin cậy trong việc 
-                gửi gắm những bữa ăn xanh - sạch, được chế biến từ nguyên liệu chưa được sử dụng 
-                nhưng vẫn đảm bảo độ tươi ngon.
+                gửi gắm những bữa ăn xanh - sạch, được chế biến từ nguyên liệu còn vẹn nguyên giá trị để đảm bảo độ tươi ngon.
               </p>
             </Card>
 
