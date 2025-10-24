@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-soft" : "bg-transparent"
+        isScrolled || isMobileMenuOpen ? "bg-background/95 backdrop-blur-md shadow-soft" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -64,7 +64,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden bg-background/20 backdrop-blur-sm hover:bg-background/40"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -73,13 +73,13 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 animate-fade-in-up">
+          <div className="md:hidden py-4 animate-fade-in-up bg-background/95 backdrop-blur-md border-t border-border/20">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-foreground hover:text-primary transition-smooth py-2"
+                  className="text-foreground hover:text-primary transition-smooth py-2 px-2 rounded-md hover:bg-primary/10"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}

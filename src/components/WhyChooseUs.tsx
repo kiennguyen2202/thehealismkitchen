@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-4" ref={sectionRef}>
         <div className="why-title text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Tại Sao Chọn Healism?
+            Tại sao nên chọn Healism?
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

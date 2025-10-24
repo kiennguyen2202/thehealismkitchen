@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import menuImage from "@/assets/Menu HEALISM.png";
 import food2 from "@/assets/đồ ăn 2.png";
 import food3 from "@/assets/đồ ăn 3.png";
 import food4 from "@/assets/đồ ăn 4.png";
@@ -25,51 +24,13 @@ const Menu = () => {
     }, sectionRef);
     return () => ctx.revert();
   }, []);
-  const menu = [
-    {
-      image: food3,
-      title: "Salad gà sốt sữa chua",
-      description: "Salad gà tươi với sốt sữa chua nhẹ nhàng, giàu đạm và rau xanh",
-      tag: "Healthy"
-    },
-    {
-      image: food2,
-      title: "Gà áp chảo & rau củ",
-      description: "Bữa ăn cân bằng với thịt gà, khoai bi và salad mùa",
-      tag: "Balanced"
-    },
-    {
-      image: food6,
-      title: "Gà nướng kiwi & salad mùa",
-      description: "Bữa ăn cân bằng với gà nướng, kiwi tươi, măng tây và salad rau xanh tươi mát.",
-      tag: "High Protein"
-    },
-    {
-      image: food4,
-      title: "Nước ép trái cây",
-      description: "Nước ép nhiều lựa chọn: cam, táo, cà rốt, dưa hấu,dâu tây,dưa leo",
-      tag: "Drink"
-    },
-    {
-      image: food5,
-      title: "Combo bento đầy đủ",
-      description: "Ưa thích mỗi ngày: gà áp chảo, măng tây, cà chua bi và sốt",
-      tag: "Popular"
-    },
-    {
-      image: food7,
-      title: "Sữa đậu xanh",
-      description: "Đồ uống thực vật nhẹ nhàng, tốt cho sức khỏe và tiêu hóa",
-      tag: "Drink"
-    }
-  ];
 
   return (
     <section id="menu" className="py-24 gradient-section">
       <div className="container mx-auto px-4" ref={sectionRef}>
         <div className="menu-title text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Menu Đa Dạng
+            Menu và một số món ăn nổi bật
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -77,34 +38,38 @@ const Menu = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {menu.map((item, index) => (
-            <Card
-              key={item.title}
-              className="menu-card-item overflow-hidden hover:shadow-medium transition-smooth group bg-card"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <div className="relative overflow-hidden aspect-[4/3]">
+        <div className="max-w-4xl mx-auto">
+          <div className="menu-card-item bg-white rounded-lg shadow-lg overflow-hidden">
+            <img
+              src={menuImage}
+              alt="Menu The Healism Kitchen"
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Food Images Gallery */}
+        <div className="mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+            {[food2, food3, food4, food5, food6, food7].map((food, index) => (
+              <div
+                key={index}
+                className="menu-card-item overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
                 <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-smooth group-hover:scale-110"
+                  src={food}
+                  alt={`Món ăn ${index + 1}`}
+                  className="w-full h-32 md:h-40 object-cover"
                 />
-                <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
-                  {item.tag}
-                </Badge>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
-                <p className="text-foreground/70 leading-relaxed">{item.description}</p>
-              </div>
-            </Card>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="text-center mt-12">
           <p className="text-muted-foreground italic">
-            * Menu thay đổi theo ngày và theo mùa vụ để đảm bảo độ tươi ngon tốt nhất
+            *Menu thay đổi theo ngày và theo mùa vụ để đảm bảo độ tươi ngon tốt nhất
           </p>
         </div>
       </div>

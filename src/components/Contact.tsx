@@ -10,8 +10,8 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Hotline & Zalo",
-      content: "0971 832 910",
-      link: "tel:0971832910",
+      content: "0905232424",
+      link: "tel:09052324240",
       color: "text-primary"
     },
     {
