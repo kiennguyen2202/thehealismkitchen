@@ -50,8 +50,7 @@ const Hero = () => {
             />
           </div>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/80 mb-8 md:mb-12 max-w-2xl leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]">
-            Biến những gì bị bỏ quên thành điều đáng quý. Mỗi bữa ăn không chỉ tốt cho sức khỏe,
-            mà còn góp phần bảo vệ môi trường và lan tỏa lối sống bền vững.
+          THỰC PHẨM SẠCH, MÔI TRƯỜNG XANH - TẬN HƯỞNG SỰ TƯƠI MỚI TRONG TỪNG MÓN ĂN.
           </p>
           <div className="hero-actions flex flex-col sm:flex-row gap-3 md:gap-4">
             <Button asChild size="lg" className="gradient-hero text-base md:text-lg px-6 md:px-8 shadow-medium">

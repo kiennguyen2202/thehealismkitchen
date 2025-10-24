@@ -9,7 +9,7 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Hotline & Zalo",
+      title: "Hotline",
       content: "0905232424",
       link: "tel:09052324240",
       color: "text-primary"

@@ -69,7 +69,7 @@ const Testimonials = () => {
       <div className="container mx-auto px-4" ref={sectionRef}>
         <div className="testi-title text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Khách Hàng Nói Gì
+          Khách hàng nói gì về Healism
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -79,7 +79,7 @@ const Testimonials = () => {
 
         {/* Avatar strip */}
         <div className="testi-avatars flex items-center justify-center -space-x-3 mb-10">
-          {[avatarBaoNghi, avatarQuynhNhu, avatarThuNgan, avatarThuNguyen].map((src, idx) => (
+          {[avatarBaoNghi, avatarQuynhNhu, avatarThuNgan, avatarThuNguyen,avatarBichNgoc].map((src, idx) => (
             <img
               key={idx}
               src={src}

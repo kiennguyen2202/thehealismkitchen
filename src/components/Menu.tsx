@@ -33,9 +33,7 @@ const Menu = () => {
             Menu và một số món ăn nổi bật
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Thực đơn thay đổi hàng ngày theo mùa vụ và nguồn nguyên liệu tươi nhất
-          </p>
+          
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -67,11 +65,7 @@ const Menu = () => {
           </div>
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground italic">
-            *Menu thay đổi theo ngày và theo mùa vụ để đảm bảo độ tươi ngon tốt nhất
-          </p>
-        </div>
+        
       </div>
     </section>
   );

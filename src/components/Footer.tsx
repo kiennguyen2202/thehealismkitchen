@@ -17,7 +17,7 @@ const Footer = () => {
               Less waste, more taste
             </p>
             <p className="text-background/70 mt-2 text-sm">
-              Công ty Cổ phần Healism
+              Công ty TNHH Healism
             </p>
           </div>
 
@@ -51,7 +51,7 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Liên hệ</h3>
             <div className="flex items-start gap-4 h-full">
               <ul className="space-y-2 text-background/80 text-sm self-start flex-none">
-                <li>Hotline & Zalo: 0971 832 910</li>
+                <li>Hotline: 0905232424</li>
                 <li>Email: thehealismkitchen@gmail.com</li>
                 <li>
                   <a 
